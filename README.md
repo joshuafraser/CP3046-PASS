@@ -1,2 +1,0 @@
-# CP3046-PASS
-CP3046 PASS Project
