@@ -1,1 +1,134 @@
-HEllo I have edited
+<!DOCTYPE HTML>
+<html>
+  <body>
+    <canvas id="scene" width="700" height="600"></canvas>
+ <script>
+
+var isAnimating = true;
+var animateRunning = true;
+var requireRedraw = true;
+var changeDirection = false;
+
+var canvas = document.getElementById('scene');
+var ctx = canvas.getContext('2d');
+var w = canvas.width;
+var h = canvas.height;
+
+var radius = 230;
+var startAngle = 0;
+var endAngle = 2 * Math.PI;
+var counterClockwise = false;
+	
+var i = 0;
+var randArray = [];
+
+
+var startDrawing = function(){
+	isAnimating = true;
+	if (!animateRunning) redraw();
+}
+
+var stopAnimating = function(){
+	isAnimating = false;
+	animateRunning = false;
+}
+
+
+var startup = function() {
+
+	for (var k=0;k<9;k++){
+		randArray[k] = Math.random()*150;
+	}
+	
+	drawWritting("Stop", 36, "red", 0,50);
+	drawWritting("Reverse it!", 36, "purple", 0, 100);
+	
+	redraw();
+}
+
+var drawWritting = function(message, size, colour, x, y){
+
+	ctx.beginPath();
+	ctx.fillStyle = colour;
+	ctx.font = "bold " + size + "px Arial";
+	ctx.fillText(message, x, y);
+	ctx.closePath();
+	
+}
+
+var circle = function(x,y,color, r) {
+	
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, 2 * Math.PI, true);
+    ctx.closePath();
+    ctx.fill();
+}
+
+
+var redraw = function() {
+   
+	if (isAnimating){
+		animateRunning = true;
+
+		ctx.save();
+		ctx.beginPath();
+		ctx.arc(w/2, h/2, radius, startAngle, endAngle, counterClockwise);
+		ctx.fillStyle = 'white';
+		ctx.fill();
+		
+		ctx.strokeStyle = 'gray';
+		ctx.lineWidth = 10;
+		ctx.stroke();
+		ctx.closePath();
+		   
+		ctx.translate(w / 2, h / 2);
+		
+		ctx.rotate(i / 100);
+		ctx.translate(100, 0);
+		
+		for (var j=0;j<=4;j++){
+			circle(randArray[j]-100, randArray[j+1], 'blue', 15);
+		}
+		//console.log("Hello");
+		ctx.restore();
+		
+		if (changeDirection) i--;
+		else i++; 
+		
+	   window.requestAnimationFrame(redraw);
+   }
+};
+
+window.requestAnimationFrame(startup);
+ 
+document.getElementById('scene').addEventListener('click', function() {
+	var mousex = event.pageX,
+		mousey = event.pageY;
+	
+	if (mousey > 25 && mousey < 50 && mousex > 0 && mousex < 180){
+		if (animateRunning) {
+			stopAnimating();
+			drawWritting("Stop", 36, "white", 0,50);
+			drawWritting("Start", 36, "green", 0,50);
+		}else if (!animateRunning) {
+			startDrawing();	
+			drawWritting("Start", 36, "white", 0,50);
+			drawWritting("Stop", 36, "red", 0,50);
+		}
+}
+
+	if (mousey > 75 && mousey < 100 && mousex > 0 && mousex < 190){
+		if (changeDirection) {
+			changeDirection = false;
+			drawWritting("Reverse it!", 36, "purple", 0,100);
+		}else{
+			changeDirection = true;
+			drawWritting("Reverse it!", 36, "black", 0,100);
+		}
+	}
+}); 
+
+</script>
+  </body>
+</html>  
