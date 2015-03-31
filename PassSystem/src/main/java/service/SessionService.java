@@ -1,6 +1,5 @@
 package service;
 
-import pojo.Campus;
 import pojo.Session;
 import utilities.PersistenceManager;
 
@@ -10,9 +9,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.List;
 
-/**
- * Created by Stuart on 29/03/2015.
- */
 public class SessionService {
 
     EntityManagerFactory emf;
@@ -23,9 +19,7 @@ public class SessionService {
         em = emf.createEntityManager();
     }
 
-
     public void addSession(Session session) {
-
         try {
             EntityTransaction t = em.getTransaction();
             try {
@@ -60,14 +54,11 @@ public class SessionService {
             em.close();
             emf.close();
         }
-
-
     }
 
     public Session findSessionById(int sessionId) {
         try {
             Session session = em.find(Session.class, sessionId);
-
             return session;
         } finally {
             em.close();
@@ -78,8 +69,6 @@ public class SessionService {
     public List<Session> findAllSessions() {
         try {
             Query q = em.createNativeQuery("SELECT * FROM session");
-
-
             return  q.getResultList();
         } finally {
             em.close();
@@ -102,6 +91,5 @@ public class SessionService {
             em.close();
             emf.close();
         }
-
     }
 }

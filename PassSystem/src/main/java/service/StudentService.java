@@ -1,6 +1,5 @@
 package service;
 
-import pojo.Campus;
 import pojo.Student;
 import utilities.PersistenceManager;
 
@@ -10,9 +9,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.List;
 
-/**
- * Created by Stuart on 29/03/2015.
- */
 public class StudentService {
 
     EntityManagerFactory emf;
@@ -23,9 +19,7 @@ public class StudentService {
         em = emf.createEntityManager();
     }
 
-
     public void addStudent(Student student) {
-
         try {
             EntityTransaction t = em.getTransaction();
             try {
@@ -57,14 +51,11 @@ public class StudentService {
             em.close();
             emf.close();
         }
-
-
     }
 
     public Student findStudentById(int stuId) {
         try {
             Student student = em.find(Student.class, stuId);
-
             return student;
         } finally {
             em.close();
@@ -76,7 +67,6 @@ public class StudentService {
     public Student findStudentByName(String studentName) {
         try {
             Student student = em.find(Student.class, studentName);
-
             return student;
         } finally {
             em.close();
@@ -84,12 +74,9 @@ public class StudentService {
         }
     }
 
-
     public List<Student> findAllStudents() {
         try {
             Query q = em.createNativeQuery("SELECT * FROM student");
-
-
             return  q.getResultList();
         } finally {
             em.close();
@@ -112,6 +99,5 @@ public class StudentService {
             em.close();
             emf.close();
         }
-
     }
 }

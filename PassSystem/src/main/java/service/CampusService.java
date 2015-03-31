@@ -8,10 +8,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.List;
 
-
-/**
- * Created by Stuart on 29/03/2015.
- */
 public class CampusService {
 
     EntityManagerFactory emf;
@@ -22,9 +18,7 @@ public class CampusService {
         em = emf.createEntityManager();
     }
 
-
     public void addCampus(Campus campus) {
-
         try {
             EntityTransaction t = em.getTransaction();
             try {
@@ -55,14 +49,11 @@ public class CampusService {
             em.close();
             emf.close();
         }
-
-
     }
 
     public Campus findCampusById(int campusId) {
         try {
             Campus campus = em.find(Campus.class, campusId);
-
             return campus;
         } finally {
             em.close();
@@ -74,7 +65,6 @@ public class CampusService {
     public Campus findCampusByName(String campusName) {
         try {
             Campus campus = em.find(Campus.class, campusName);
-
             return campus;
         } finally {
             em.close();
@@ -82,12 +72,9 @@ public class CampusService {
         }
     }
 
-
     public List<Campus> findAllCampuses() {
         try {
             Query q = em.createNativeQuery("SELECT * FROM campus");
-
-
             return  q.getResultList();
         } finally {
             em.close();
@@ -110,9 +97,5 @@ public class CampusService {
             em.close();
             emf.close();
         }
-
     }
-
-
-
 }

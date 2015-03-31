@@ -1,6 +1,5 @@
 package service;
 
-import pojo.Campus;
 import pojo.PassStaff;
 import utilities.PersistenceManager;
 
@@ -10,9 +9,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.List;
 
-/**
- * Created by Stuart on 29/03/2015.
- */
 public class PassStaffService  {
 
     EntityManagerFactory emf;
@@ -23,9 +19,7 @@ public class PassStaffService  {
         em = emf.createEntityManager();
     }
 
-
     public void addPassStaff(PassStaff passStaff) {
-
         try {
             EntityTransaction t = em.getTransaction();
             try {
@@ -57,14 +51,11 @@ public class PassStaffService  {
             em.close();
             emf.close();
         }
-
-
     }
 
     public PassStaff findPassStaffById(int passStaffId) {
         try {
             PassStaff passStaff = em.find(PassStaff.class, passStaffId);
-
             return passStaff;
         } finally {
             em.close();
@@ -76,7 +67,6 @@ public class PassStaffService  {
     public PassStaff findPassStaffByName(String staffLName) {
         try {
            PassStaff passStaff = em.find(PassStaff.class, staffLName);
-
             return passStaff;
         } finally {
             em.close();
@@ -88,8 +78,6 @@ public class PassStaffService  {
     public List<PassStaff> findAllPassStaff() {
         try {
             Query q = em.createNativeQuery("SELECT * FROM passstaff");
-
-
             return  q.getResultList();
         } finally {
             em.close();
@@ -112,7 +100,5 @@ public class PassStaffService  {
             em.close();
             emf.close();
         }
-
     }
-
 }

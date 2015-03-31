@@ -9,9 +9,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.List;
 
-/**
- * Created by Stuart on 29/03/2015.
- */
 public class PassAttendanceService {
 
     EntityManagerFactory emf;
@@ -22,9 +19,7 @@ public class PassAttendanceService {
         em = emf.createEntityManager();
     }
 
-
     public void addPassAttendance(PassAttendance passAttendance) {
-
         try {
             EntityTransaction t = em.getTransaction();
             try {
@@ -57,14 +52,11 @@ public class PassAttendanceService {
             em.close();
             emf.close();
         }
-
-
     }
 
     public PassAttendance findPassAttendanceId(int attendId) {
         try {
             PassAttendance passAttendance = em.find(PassAttendance.class, attendId);
-
             return passAttendance;
         } finally {
             em.close();
@@ -75,8 +67,6 @@ public class PassAttendanceService {
     public List<PassAttendance> findAllPassAttendances() {
         try {
             Query q = em.createNativeQuery("SELECT * FROM passattendance");
-
-
             return  q.getResultList();
         } finally {
             em.close();
@@ -99,6 +89,5 @@ public class PassAttendanceService {
             em.close();
             emf.close();
         }
-
     }
 }

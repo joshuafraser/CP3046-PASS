@@ -1,6 +1,5 @@
 package service;
 
-import pojo.Campus;
 import pojo.Semester;
 import utilities.PersistenceManager;
 
@@ -10,9 +9,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.List;
 
-/**
- * Created by Stuart on 29/03/2015.
- */
 public class SemesterService {
 
     EntityManagerFactory emf;
@@ -23,9 +19,7 @@ public class SemesterService {
         em = emf.createEntityManager();
     }
 
-
     public void addSemester(Semester semester) {
-
         try {
             EntityTransaction t = em.getTransaction();
             try {
@@ -57,14 +51,11 @@ public class SemesterService {
             em.close();
             emf.close();
         }
-
-
     }
 
     public Semester findSemesterById(int semesterId) {
         try {
             Semester semester = em.find(Semester.class, semesterId);
-
             return semester;
         } finally {
             em.close();
@@ -76,7 +67,6 @@ public class SemesterService {
     public Semester findSemesterByName(String semesterName) {
         try {
             Semester semester = em.find(Semester.class, semesterName);
-
             return semester;
         } finally {
             em.close();
@@ -84,12 +74,9 @@ public class SemesterService {
         }
     }
 
-
     public List<Semester> findAllSemesters() {
         try {
             Query q = em.createNativeQuery("SELECT * FROM semester");
-
-
             return  q.getResultList();
         } finally {
             em.close();
@@ -114,7 +101,4 @@ public class SemesterService {
         }
 
     }
-
-
-
 }

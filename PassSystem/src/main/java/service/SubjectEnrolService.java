@@ -1,7 +1,5 @@
 package service;
 
-import pojo.Campus;
-import pojo.Subject;
 import pojo.SubjectEnrol;
 import utilities.PersistenceManager;
 
@@ -11,9 +9,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.List;
 
-/**
- * Created by Stuart on 29/03/2015.
- */
 public class SubjectEnrolService {
 
     EntityManagerFactory emf;
@@ -24,9 +19,7 @@ public class SubjectEnrolService {
         em = emf.createEntityManager();
     }
 
-
     public void addSubjectEnrol(SubjectEnrol subjectEnrol) {
-
         try {
             EntityTransaction t = em.getTransaction();
             try {
@@ -56,8 +49,6 @@ public class SubjectEnrolService {
     public List<SubjectEnrol> findAllSubjectEnrol() {
         try {
             Query q = em.createNativeQuery("SELECT * FROM subjectenrol");
-
-
             return  q.getResultList();
         } finally {
             em.close();
@@ -80,6 +71,5 @@ public class SubjectEnrolService {
             em.close();
             emf.close();
         }
-
     }
 }

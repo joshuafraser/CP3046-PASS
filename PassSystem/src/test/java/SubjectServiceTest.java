@@ -5,9 +5,6 @@ import service.SubjectService;
 
 import java.sql.SQLException;
 
-/**
- * Created by Stuart on 29/03/2015.
- */
 public class SubjectServiceTest implements JUnitTestInterface{
 
     SubjectService ss = new SubjectService();
@@ -19,6 +16,7 @@ public class SubjectServiceTest implements JUnitTestInterface{
 
         ss.addSubject(new Subject(4, "CPtest", "whatever"));
     }
+
     @Ignore
     @Override
     @Test
@@ -26,18 +24,21 @@ public class SubjectServiceTest implements JUnitTestInterface{
         ss.updateSubject(14, 4, "CPamen", "ammended");
 
     }
+
     @Ignore
     @Override
     @Test
     public void testFindSingle() throws SQLException {
         System.out.println(ss.findSubjectById(14));
     }
+
     @Ignore
     @Override
     @Test
     public void testFindAll() throws SQLException {
         System.out.println(ss.findAllSubjects().size());
     }
+
     @Ignore
     @Override
     @Test

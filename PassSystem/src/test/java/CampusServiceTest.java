@@ -5,13 +5,7 @@ import service.CampusService;
 
 import java.sql.SQLException;
 
-/**
- * Created by Stuart on 29/03/2015.
- */
-
-
 public class CampusServiceTest implements JUnitTestInterface {
-
 
     CampusService cs = new CampusService();
 
@@ -22,11 +16,13 @@ public class CampusServiceTest implements JUnitTestInterface {
         System.out.println(c.toString());
         cs.addCampus(c);
     }
+
     @Ignore
     @Test
     public void testUpdate() throws SQLException{
         cs.updateCampus(6, "After Update");
     }
+
     @Ignore
     @Test
     public void testFindSingle() throws SQLException{
@@ -38,6 +34,7 @@ public class CampusServiceTest implements JUnitTestInterface {
     public void testFindAll() throws SQLException{
         System.out.println(cs.findAllCampuses().size());
     }
+
     @Ignore
     @Test
     public void testDelete() throws SQLException{

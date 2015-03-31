@@ -2,10 +2,6 @@ package pojo;
 
 import javax.persistence.*;
 
-/**
- * Created by Stuart on 29/03/2015.
- */
-
 @Entity
 @Table
 public class Result {

@@ -5,11 +5,10 @@ import service.SubjectEnrolService;
 
 import java.sql.SQLException;
 
-/**
- * Created by Stuart on 30/03/2015.
- */
 public class SubjectEnrolServiceTest implements JUnitTestInterface {
+
     SubjectEnrolService se = new SubjectEnrolService();
+
     @Ignore
     @Test
     @Override
@@ -22,18 +21,21 @@ public class SubjectEnrolServiceTest implements JUnitTestInterface {
     public void testUpdate() throws SQLException {
 
     }
+
     @Ignore
     @Test
     @Override
     public void testFindSingle() throws SQLException {
         System.out.println(se.findSubjectEnrolById(5));
     }
+
     @Ignore
     @Test
     @Override
     public void testFindAll() throws SQLException {
         System.out.println(se.findAllSubjectEnrol().size());
     }
+
     @Ignore
     @Test
     @Override

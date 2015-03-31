@@ -1,6 +1,5 @@
 package service;
 
-import pojo.Campus;
 import pojo.Subject;
 import utilities.PersistenceManager;
 
@@ -10,9 +9,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.List;
 
-/**
- * Created by Stuart on 29/03/2015.
- */
 public class SubjectService {
 
     EntityManagerFactory emf;
@@ -110,7 +106,4 @@ public class SubjectService {
             emf.close();
         }
     }
-
-
-
 }

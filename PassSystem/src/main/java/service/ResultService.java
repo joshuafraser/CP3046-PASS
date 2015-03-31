@@ -1,6 +1,5 @@
 package service;
 
-import pojo.Campus;
 import pojo.Result;
 import utilities.PersistenceManager;
 
@@ -10,9 +9,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.List;
 
-/**
- * Created by Stuart on 29/03/2015.
- */
 public class ResultService {
 
     EntityManagerFactory emf;
@@ -23,9 +19,7 @@ public class ResultService {
         em = emf.createEntityManager();
     }
 
-
     public void addResult(Result result) {
-
         try {
             EntityTransaction t = em.getTransaction();
             try {
@@ -59,14 +53,11 @@ public class ResultService {
             em.close();
             emf.close();
         }
-
-
     }
 
     public Result findResultById(int resultId) {
         try {
             Result result = em.find(Result.class, resultId);
-
             return result;
         } finally {
             em.close();
@@ -77,8 +68,6 @@ public class ResultService {
     public List<Result> findAllResults() {
         try {
             Query q = em.createNativeQuery("SELECT * FROM result");
-
-
             return  q.getResultList();
         } finally {
             em.close();
@@ -101,6 +90,5 @@ public class ResultService {
             em.close();
             emf.close();
         }
-
     }
 }

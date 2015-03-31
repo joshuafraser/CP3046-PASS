@@ -10,9 +10,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.List;
 
-/**
- * Created by Stuart on 29/03/2015.
- */
 public class WeekService {
 
     EntityManagerFactory emf;
@@ -23,9 +20,7 @@ public class WeekService {
         em = emf.createEntityManager();
     }
 
-
     public void addWeek(Week week) {
-
         try {
             EntityTransaction t = em.getTransaction();
             try {
@@ -57,8 +52,6 @@ public class WeekService {
             em.close();
             emf.close();
         }
-
-
     }
 
     public Week findWeekById(int weekId) {
@@ -83,7 +76,6 @@ public class WeekService {
             emf.close();
         }
     }
-
 
     public List<Campus> findAllCampuses() {
         try {
@@ -112,7 +104,5 @@ public class WeekService {
             em.close();
             emf.close();
         }
-
     }
-
 }
