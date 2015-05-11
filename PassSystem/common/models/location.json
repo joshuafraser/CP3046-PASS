@@ -1,0 +1,27 @@
+{
+  "name": "Location",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "campus": {
+      "type": "Campus",
+      "required": true
+    },
+    "building": {
+      "type": "string",
+      "required": true
+    },
+    "room": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

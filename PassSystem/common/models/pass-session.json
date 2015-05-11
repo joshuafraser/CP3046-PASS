@@ -1,0 +1,37 @@
+{
+  "name": "PassSession",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "attendance": {
+      "type": [
+        "Student"
+      ],
+      "required": true
+    },
+    "location": {
+      "type": "Location",
+      "required": true
+    },
+    "passLeader": {
+      "type": "Staff",
+      "required": true
+    },
+    "subject": {
+      "type": "Subject",
+      "required": true
+    },
+    "week": {
+      "type": "Week",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

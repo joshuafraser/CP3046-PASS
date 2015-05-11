@@ -1,0 +1,13 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "passSystemDataSource": {
+    "host": "localhost",
+    "port": 27017,
+    "database": "passSystem",
+    "name": "passSystemDataSource",
+    "connector": "mongodb"
+  }
+}

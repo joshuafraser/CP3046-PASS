@@ -1,0 +1,53 @@
+{
+  "name": "Subject",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "code": {
+      "type": "string",
+      "required": true,
+      "comments": "CP3046"
+    },
+    "studyPeriod": {
+      "type": "string",
+      "required": true,
+      "comments": "SP1"
+    },
+    "subjectId": {
+      "type": "string",
+      "id": true,
+      "required": true,
+      "comments": "15SP1-CP3046"
+    },
+    "campus": {
+      "type": "Campus",
+      "required": true,
+      "comments": "campusId"
+    },
+    "year": {
+      "type": "string",
+      "required": true,
+      "comments": "2015"
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "comments": "Intro...."
+    },
+    "enrolled": {
+      "type": [
+        "Student"
+      ],
+      "required": true,
+      "comments": "enrolledStudents"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
