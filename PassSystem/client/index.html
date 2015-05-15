@@ -57,13 +57,38 @@
     
     <div  ng-app="myApp" ng-controller="Controller">
     <h2>List of all Students</h2>
-      <ul>
+        <table>
+          <thead>
+            <tr>
+              <th>Student ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <td><input ng-model="spot.studentId"></input></td>
+            <td><input ng-model="spot.firstName"></input></td>
+            <td><input ng-model="spot.lastName"></input></td>
+            <td><input ng-model="spot.email"></input></td>
+            <td><button ng-click="addStudent()">Add Student</button>
+        <button ng-click="updateStudent()">Update</button>&nbsp;&nbsp;<button ng-click="deselect()">Clear</button></td>
+        </tr>
+          <tr ng-repeat="spot in allStudents">
+            <td>{{spot.studentId}}</td>
+            <td>{{spot.firstName}}</td>
+            <td>({{spot.lastName}})</td>
+            <td>{{spot.email}}</td>
+            <td><button ng-click="deleteStudent(spot.studentId)">Delete</button>
+          <button ng-click="editStudent(spot.studentId) ">Edit</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+          
         
-        <li ng-repeat="spot in allStudents">
-          {{spot.firstName}} ({{spot.lastName}})
-          <button ng-click="deleteID(spot.studentId)">Delte</button>
-        </li>
-      </ul>
       <h2>List of all subjects</h2>
       <ul>       
         <li ng-repeat="spot in allSubjects">
