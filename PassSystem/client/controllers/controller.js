@@ -42,7 +42,7 @@ angular.module('myApp',
   		Student.upsert($scope.spot);
   		getStudents();
   	}
-  	$scope.deselect = function(){
+  	$scope.deselectStudent = function(){
   		$scope.spot = "";
   	}  
 
@@ -56,7 +56,7 @@ angular.module('myApp',
     	Subject.find(
        		function (result) {
             	$scope.allSubjects = result;
-            	$scope.spot = "";
+            	$scope.subject = "";
         });
 	}
   	$scope.deleteSubject = function (itemid){
@@ -66,20 +66,20 @@ angular.module('myApp',
   	}
   	$scope.addSubject = function (){
   		//console.log($scope.spot);
-  		Subject.create($scope.spot);
+  		Subject.create($scope.subject);
         getSubjects();   
   	}
   	$scope.editSubject = function(itemid){
   		//console.log(itemid);
-  		$scope.spot = Subject.findById({id: itemid});
+  		$scope.subject = Subject.findById({id: itemid});
   	}
   	$scope.updateSubject = function(){
   		//console.log($scope.spot.studentId);
-  		Subject.upsert($scope.spot);
+  		Subject.upsert($scope.subject);
   		getSubjects();
   	}
-  	$scope.deselect = function(){
-  		$scope.spot = "";
+  	$scope.deselectSubject = function(){
+  		$scope.subject = "";
   	}  
 
 
@@ -93,7 +93,7 @@ angular.module('myApp',
     	Staff.find(
        		function (result) {
             	$scope.allStaff = result;
-            	$scope.spot = "";
+            	$scope.staff = "";
         });
 	}
   	$scope.deleteStaff = function (itemid){
@@ -103,20 +103,20 @@ angular.module('myApp',
   	}
   	$scope.addStaff = function (){
   		//console.log($scope.spot);
-  		Staff.create($scope.spot);
+  		Staff.create($scope.staff);
         getStaff();   
   	}
   	$scope.editStaff = function(itemid){
   		//console.log(itemid);
-  		$scope.spot = Staff.findById({id: itemid});
+  		$scope.staff = Staff.findById({id: itemid});
   	}
   	$scope.updateStaff = function(){
   		//console.log($scope.spot.studentId);
-  		Staff.upsert($scope.spot);
+  		Staff.upsert($scope.staff);
   		getStaff();
   	}
-  	$scope.deselect = function(){
-  		$scope.spot = "";
+  	$scope.deselectStaff = function(){
+  		$scope.staff = "";
   	}  
 
 
@@ -130,7 +130,7 @@ angular.module('myApp',
     	Campus.find(
        		function (result) {
             	$scope.allCampus = result;
-            	$scope.spot = "";
+            	$scope.campus = "";
         });
 	}
   	$scope.deleteCampus = function (itemid){
@@ -140,20 +140,20 @@ angular.module('myApp',
   	}
   	$scope.addCampus = function (){
   		//console.log($scope.spot);
-  		Campus.create($scope.spot);
+  		Campus.create($scope.campus);
         getCampus();   
   	}
   	$scope.editCampus = function(itemid){
   		//console.log(itemid);
-  		$scope.spot = Campus.findById({id: itemid});
+  		$scope.campus = Campus.findById({id: itemid});
   	}
   	$scope.updateCampus = function(){
   		//console.log($scope.spot.studentId);
-  		Campus.upsert($scope.spot);
+  		Campus.upsert($scope.campus);
   		getCampus();
   	}
-  	$scope.deselect = function(){
-  		$scope.spot = "";
+  	$scope.deselectCampus = function(){
+  		$scope.campus = "";
   	}  
 
 
@@ -167,7 +167,7 @@ angular.module('myApp',
     	Locations.find(
        		function (result) {
             	$scope.allLocations = result;
-            	$scope.spot = "";
+            	$scope.locations = "";
         });
 	}
   	$scope.deleteLocations = function (itemid){
@@ -177,20 +177,20 @@ angular.module('myApp',
   	}
   	$scope.addLocations = function (){
   		//console.log($scope.spot);
-  		Locations.create($scope.spot);
+  		Locations.create($scope.locations);
         getLocations();   
   	}
   	$scope.editLocations = function(itemid){
   		//console.log(itemid);
-  		$scope.spot = Locations.findById({id: itemid});
+  		$scope.locations = Locations.findById({id: itemid});
   	}
   	$scope.updateLocations = function(){
   		//console.log($scope.spot.studentId);
-  		Locations.upsert($scope.spot);
+  		Locations.upsert($scope.locations);
   		getLocations();
   	}
-  	$scope.deselect = function(){
-  		$scope.spot = "";
+  	$scope.deselectLocations = function(){
+  		$scope.locations = "";
   	} 
 
 
@@ -203,7 +203,7 @@ angular.module('myApp',
     	PassSession.find(
        		function (result) {
             	$scope.allPassSessions = result;
-            	$scope.spot = "";
+            	$scope.passSession = "";
         });
 	}
   	$scope.deletePassSession = function (itemid){
@@ -213,20 +213,20 @@ angular.module('myApp',
   	}
   	$scope.addPassSession = function (){
   		//console.log($scope.spot);
-  		PassSession.create($scope.spot);
+  		PassSession.create($scope.passSession);
         getPassSessions();   
   	}
   	$scope.editPassSession = function(itemid){
   		//console.log(itemid);
-  		$scope.spot = PassSession.findById({id: itemid});
+  		$scope.passSession = PassSession.findById({id: itemid});
   	}
   	$scope.updatePassSession = function(){
   		//console.log($scope.spot.studentId);
-  		PassSession.upsert($scope.spot);
+  		PassSession.upsert($scope.passSession);
   		getPassSessions();
   	}
-  	$scope.deselect = function(){
-  		$scope.spot = "";
+  	$scope.deselectPassSessions = function(){
+  		$scope.passSession = "";
   	} 
 
 
@@ -239,7 +239,7 @@ angular.module('myApp',
     	Week.find(
        		function (result) {
             	$scope.allWeeks = result;
-            	$scope.spot = "";
+            	$scope.week = "";
         });
 	}
   	$scope.deleteWeek = function (itemid){
@@ -249,20 +249,20 @@ angular.module('myApp',
   	}
   	$scope.addWeek = function (){
   		//console.log($scope.spot);
-  		Week.create($scope.spot);
+  		Week.create($scope.week);
         getWeeks();   
   	}
   	$scope.editWeek = function(itemid){
   		//console.log(itemid);
-  		$scope.spot = Week.findById({id: itemid});
+  		$scope.week = Week.findById({id: itemid});
   	}
   	$scope.updateWeek = function(){
   		//console.log($scope.spot.studentId);
-  		Week.upsert($scope.spot);
+  		Week.upsert($scope.week);
   		getWeeks();
   	}
-  	$scope.deselect = function(){
-  		$scope.spot = "";
+  	$scope.deselectWeek = function(){
+  		$scope.week = "";
   	} 
 
 
@@ -297,7 +297,7 @@ angular.module('myApp',
   		User.upsert($scope.spot);
   		getUsers();
   	}
-  	$scope.deselect = function(){
+  	$scope.deselectUser = function(){
   		$scope.spot = "";
   	} 
 

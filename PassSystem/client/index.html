@@ -56,6 +56,7 @@
     
     
     <div  ng-app="myApp" ng-controller="Controller">
+
     <h2>List of all Students</h2>
         <table>
           <thead>
@@ -74,12 +75,12 @@
             <td><input ng-model="spot.lastName"></input></td>
             <td><input ng-model="spot.email"></input></td>
             <td><button ng-click="addStudent()">Add Student</button>
-        <button ng-click="updateStudent()">Update</button>&nbsp;&nbsp;<button ng-click="deselect()">Clear</button></td>
+        <button ng-click="updateStudent()">Update</button>&nbsp;&nbsp;<button ng-click="deselectStudent()">Clear</button></td>
         </tr>
           <tr ng-repeat="spot in allStudents">
             <td>{{spot.studentId}}</td>
             <td>{{spot.firstName}}</td>
-            <td>({{spot.lastName}})</td>
+            <td>{{spot.lastName}}</td>
             <td>{{spot.email}}</td>
             <td><button ng-click="deleteStudent(spot.studentId)">Delete</button>
           <button ng-click="editStudent(spot.studentId) ">Edit</button></td>
@@ -88,27 +89,164 @@
     </table>
 
           
-        
-      <h2>List of all subjects</h2>
-      <ul>       
-        <li ng-repeat="spot in allSubjects">
-          Code: {{spot.code}} StudyPeriod:{{spot.studyPeriod}}
-        </li>
-      </ul>
+       <h2>List of all Subjects</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Study Peroid</th>
+              <th>Subject ID</th>
+              <th>Campus</th>
+              <th>Year</th>
+              <th>Title</th>
+              <th>Enrolled</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <td><input ng-model="subject.code"></input></td>
+            <td><input ng-model="subject.studyPeriod"></input></td>
+            <td><input ng-model="subject.subjectId"></input></td>
+            <td><input ng-model="subject.campus.CampusId"></input></td>
+            <td><input ng-model="subject.year"></input></td>
+            <td><input ng-model="subject.title"></input></td>
+            <td><input ng-model="subject.enrolled"></input></td>
+            <td><button ng-click="addSubject()">Add Subject</button>
+        <button ng-click="updateSubject()">Update</button>&nbsp;&nbsp;<button ng-click="deselectSubject()">Clear</button></td>
+        </tr>
+          <tr ng-repeat="subject in allSubjects">
+            <td>{{subject.code}}</td>
+            <td>{{subject.studyPeriod}}</td>
+            <td>{{subject.subjectId}}</td>
+            <td>{{spot.campus.CampusId}}</td>
+            <td>{{subject.year}}</td>
+            <td>{{subject.title}}</td>
+            <td>{{subject.enrolled}}</td>
+            <td><button ng-click="deleteSubject(subject.subjectId)">Delete</button>
+          <button ng-click="editSubject(subject.subjectId) ">Edit</button></td>
+        </tr>
+      </tbody>
+    </table> 
+
+
+    <h2>List of all Staff</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Staff ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Position</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <td><input ng-model="staff.staffId"></input></td>
+            <td><input ng-model="staff.firstName"></input></td>
+            <td><input ng-model="staff.lastName"></input></td>
+            <td><input ng-model="staff.email"></input></td>
+            <td><input ng-model="staff.position"></input></td>
+            <td><button ng-click="addStaff()">Add Staff</button>
+        <button ng-click="updateStaff()">Update</button>&nbsp;&nbsp;<button ng-click="deselectStaff()">Clear</button></td>
+        </tr>
+          <tr ng-repeat="staff in allStaff">
+            <td>{{staff.staffId}}</td>
+            <td>{{staff.firstName}}</td>
+            <td>{{staff.lastName}}</td>
+            <td>{{staff.email}}</td>
+            <td>{{staff.position}}</td>
+            <td><button ng-click="deleteStaff(staff.staffId)">Delete</button>
+          <button ng-click="editStaff(staff.staffId) ">Edit</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>List of all Campuses</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Campus ID</th>
+              <th>Campus Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <td><input ng-model="campus.CampusId"></input></td>
+            <td><input ng-model="campus.campusName"></input></td>
+            <td><button ng-click="addCampus()">Add Campus</button>
+        <button ng-click="updateCampus()">Update</button>&nbsp;&nbsp;<button ng-click="deselectCampus()">Clear</button></td>
+        </tr>
+          <tr ng-repeat="campus in allCampus">
+            <td>{{campus.CampusId}}</td>
+            <td>{{campus.campusName}}</td>
+            <td><button ng-click="deleteCampus(campus.CampusId)">Delete</button>
+          <button ng-click="editCampus(campus.CampusId) ">Edit</button></td>
+        </tr>
+      </tbody>
+    </table>
+      
+    <h2>List of all Locations</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Campus ID</th>
+              <th>Campus Name</th>
+              <th>Building</th>
+              <th>Room</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <td><input ng-model="locations.campus.CampusId"></input></td>
+            <td><input ng-model="locations.campus.campusName"></input></td>
+            <td><input ng-model="locations.building"></input></td>
+            <td><input ng-model="locations.room"></input></td>
+            <td><button ng-click="addLocations()">Add Location</button>
+        <button ng-click="updateLocations()">Update</button>&nbsp;&nbsp;<button ng-click="deselectLocations()">Clear</button></td>
+        </tr>
+          <tr ng-repeat="locations in allLocations">
+            <td>{{locations.campus.CampusId}}</td>
+            <td>{{locations.campus.campusName}}</td>
+            <td>{{locations.building}}</td>
+            <td>{{locations.room}}</td>
+            <td><button ng-click="deleteLocations(locations.id)">Delete</button>
+          <button ng-click="editLocations(locations.id) ">Edit</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>List of all PassSessions</h2>
+    
+
+    <h2>List of all Weeks</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Week ID</th>
+              <th>Week Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            <td><input ng-model="week.weekId"></input></td>
+            <td><input ng-model="week.name"></input></td>
+            <td><button ng-click="addWeek()">Add Week</button>
+        <button ng-click="updateWeek()">Update</button>&nbsp;&nbsp;<button ng-click="deselectWeek()">Clear</button></td>
+        </tr>
+          <tr ng-repeat="week in allWeeks">
+            <td>{{week.weekId}}</td>
+            <td>{{week.name}}</td>
+            <td><button ng-click="deleteWeek(week.weekId)">Delete</button>
+          <button ng-click="editWeek(week.weekId) ">Edit</button></td>
+        </tr>
+      </tbody>
+    </table>
 
 
     </div>
-
-    <!-- <div ng-app="lbServices">
-
-    <h2>Just using service</h2>
-      <ul>
-        
-        <li ng-repeat="spot in lbServices.">
-          {{spot.firstName}} ({{spot.lastName}})
-        </li>
-      </ul>
-     </div> -->
-
   </body>
 </html>
