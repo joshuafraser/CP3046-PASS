@@ -363,7 +363,7 @@ $(document).pngFix( );
 				</table>
 				</div>
 				<!--  end message-blue -->
-				<div style="width: 50%">
+				<div style="width: 70%">
 				<canvas id="canvas" height="450" width="600"></canvas>
 				</div>
 				
@@ -371,21 +371,21 @@ $(document).pngFix( );
 				var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
 
 				var barChartData = {
-					labels : ["January","February","March","April","May","June","July"],
+					labels : ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5", "Week 6", "Week 7", "Week 8", "Week 9", "Week 10", "Week 11", "Week 12", "Week 13"],
 					datasets : [
 					{
 					fillColor : "rgba(220,220,220,0.5)",
 					strokeColor : "rgba(220,220,220,0.8)",
 					highlightFill: "rgba(220,220,220,0.75)",
 					highlightStroke: "rgba(220,220,220,1)",
-					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+					data : [10,20,30,40,50,60,70,80,90,100,110,120,130]
 					},
 				{
 					fillColor : "rgba(151,187,205,0.5)",
 					strokeColor : "rgba(151,187,205,0.8)",
 					highlightFill : "rgba(151,187,205,0.75)",
 					highlightStroke : "rgba(151,187,205,1)",
-					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+					data : [10,20,30,40,50,60,70,80,90,100,110,120,130]
 				}
 				]
 
@@ -423,10 +423,11 @@ $(document).pngFix( );
                     <th class="table-header-repeat line-left"><a href="">Week 13</a></th>
 				</tr>
 				<tr ng-repeat="spot in allStudents">
-					<td><input  type="checkbox"/></td>
+				
+					<td><input  type="checkbox" /></td>
 					<td>{{spot.firstName}}</td>
 					<td>{{spot.lastName}}</td>
-					<td ng-repeat="spot in allStudents"><input  type="checkbox"/></td>
+					<td ng-repeat="spot in allWeeks"><input  type="checkbox" ng-model=""/></td>
 					<!-- <td><input  type="checkbox"/></td>
 					<td><input  type="checkbox"/></td>
                     <td><input  type="checkbox"/></td>

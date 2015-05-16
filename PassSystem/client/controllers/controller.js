@@ -10,7 +10,8 @@ angular.module('myApp',
  	$scope.allWeeks = [];
  	$scope.allUsers = [];
 
- 	
+ 	$scope.monkeyfarm= true;
+
  	//////////Student\\\\\\\\\\
 
  	Student.find().$promise.then(function(results){
