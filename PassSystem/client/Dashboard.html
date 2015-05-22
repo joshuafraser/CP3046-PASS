@@ -31,7 +31,7 @@ $(function(){
 	$('#mainform input[type=checkbox]').checkBox('toggle');
 	return false;
 	});
-});
+});n
 </script>  
 
 <![if !IE 7]>
@@ -422,12 +422,12 @@ $(document).pngFix( );
                     <th class="table-header-repeat line-left"><a href="">Week 12</a></th>
                     <th class="table-header-repeat line-left"><a href="">Week 13</a></th>
 				</tr>
-				<tr ng-repeat="spot in allStudents">
+				<tr ng-repeat="spot in allStudents" class="alternate-row">
 				
 					<td><input  type="checkbox" /></td>
 					<td>{{spot.firstName}}</td>
 					<td>{{spot.lastName}}</td>
-					<td ng-repeat="spot in allWeeks"><input  type="checkbox" ng-model=""/></td>
+					<td ng-repeat="spot in allWeeks"><input  type="checkbox"  checked="checked" ng-model=""/></td>
 					<!-- <td><input  type="checkbox"/></td>
 					<td><input  type="checkbox"/></td>
                     <td><input  type="checkbox"/></td>

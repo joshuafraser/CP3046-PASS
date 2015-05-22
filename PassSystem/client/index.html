@@ -84,7 +84,8 @@
             <td>{{spot.campus.CampusId}}</td>
             <td>{{subject.year}}</td>
             <td>{{subject.title}}</td>
-            <td>{{subject.enrolled}}</td>
+            <td ng-repeat="spot in subject.enrolled">
+              {{spot.studentId}}</td>
             <td><button ng-click="deleteSubject(subject.subjectId)">Delete</button>
           <button ng-click="editSubject(subject.subjectId) ">Edit</button></td>
         </tr>
