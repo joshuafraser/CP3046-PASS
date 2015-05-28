@@ -305,37 +305,37 @@ angular.module('myApp',
 
 	//////////Users\\\\\\\\\\
 
- 	User.find().$promise.then(function(results){
- 		$scope.allUsers = results;
- 		});
-	function getUsers() {
-    	User.find(
-       		function (result) {
-            	$scope.allUsers = result;
-            	$scope.spot = "";
-        });
-	}
-  	$scope.deleteUser = function (itemid){
-  		//console.log(itemid);
-  		User.deleteById({id: itemid});
-  		geUsers();
-  	}
-  	$scope.addUser = function (){
-  		//console.log($scope.spot);
-  		User.create($scope.spot);
-        getUsers();   
-  	}
-  	$scope.editUser = function(itemid){
-  		//console.log(itemid);
-  		$scope.spot = User.findById({id: itemid});
-  	}
-  	$scope.updateUser = function(){
-  		//console.log($scope.spot.studentId);
-  		User.upsert($scope.spot);
-  		getUsers();
-  	}
-  	$scope.deselectUser = function(){
-  		$scope.spot = "";
-  	} 
+ // 	User.find().$promise.then(function(results){
+ // 		$scope.allUsers = results;
+ // 		});
+	// function getUsers() {
+ //    	User.find(
+ //       		function (result) {
+ //            	$scope.allUsers = result;
+ //            	$scope.spot = "";
+ //        });
+	// }
+ //  	$scope.deleteUser = function (itemid){
+ //  		//console.log(itemid);
+ //  		User.deleteById({id: itemid});
+ //  		geUsers();
+ //  	}
+ //  	$scope.addUser = function (){
+ //  		//console.log($scope.spot);
+ //  		User.create($scope.spot);
+ //        getUsers();   
+ //  	}
+ //  	$scope.editUser = function(itemid){
+ //  		//console.log(itemid);
+ //  		$scope.spot = User.findById({id: itemid});
+ //  	}
+ //  	$scope.updateUser = function(){
+ //  		//console.log($scope.spot.studentId);
+ //  		User.upsert($scope.spot);
+ //  		getUsers();
+ //  	}
+ //  	$scope.deselectUser = function(){
+ //  		$scope.spot = "";
+ //  	} 
 
 }]);

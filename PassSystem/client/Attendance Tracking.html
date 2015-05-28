@@ -378,7 +378,7 @@ $(document).pngFix( );
 
 				<tt>selection={{selection}}</tt>
 
-				<select id="mySelect1" ng-model="monkey" ng-options="passSession.subject for passSession in allPassSessions track by passSession.subject" ng-if="checkSubject()">
+				<select id="mySelect1" ng-model="monkey" ng-options="passSession.week.weekId for passSession in allPassSessions track by passSession.subject">
                 	<option value="">-- choose Pass Session --</option>
                 </select>
 
@@ -437,27 +437,11 @@ $(document).pngFix( );
                     <th width="156" class="table-header-repeat line-left"><a href="">Total Attendance</a></th>
                     <th width="156" class="table-header-repeat line-left"><a href="">Final Grade</a></th>
 				</tr>
-				<tr>
+				<tr ng-repeat="n in monkey.attendance">
 					<td><input  type="checkbox"/></td>
-                    <td>12345678</td>
-					<td>Sabev</td>
-					<td>George</td>
-					<td><input  type="checkbox"/></td>
-					<td><input  type="checkbox"/></td>
-					<td><input  type="checkbox"/></td>
-                    <td><input  type="checkbox"/></td>
-                    <td><input  type="checkbox"/></td>
-                    <td><input  type="checkbox"/></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-				</tr>
-				<tr class="alternate-row">
-					<td><input  type="checkbox"/></td>
-					<td>12345678</td>
-                    <td>Sabev</td>
-					<td>George</td>
+                    <td>{{n.studentId}}</td>
+					<td ng-options="">{{}}</td>
+					<td>{{}}</td>
 					<td><input  type="checkbox"/></td>
 					<td><input  type="checkbox"/></td>
 					<td><input  type="checkbox"/></td>
@@ -469,70 +453,10 @@ $(document).pngFix( );
                     <td></td>
                     <td></td>
 				</tr>
-				<tr>
-					<td><input  type="checkbox"/></td>
-                    <td>12345678</td>
-					<td>Sabev</td>
-					<td>George</td>
-					<td><input  type="checkbox"/></td>
-					<td><input  type="checkbox"/></td>
-					<td><input  type="checkbox"/></td>
-                    <td><input  type="checkbox"/></td>
-                    <td><input  type="checkbox"/></td>
-                    <td><input  type="checkbox"/></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-				</tr>
-				<tr class="alternate-row">
-					<td><input  type="checkbox"/></td>
-                    <td>12345678</td>
-					<td>Sabev</td>
-					<td>George</td>
-					<td><input  type="checkbox"/></td>
-					<td><input  type="checkbox"/></td>
-					<td><input  type="checkbox"/></td>
-                    <td><input  type="checkbox"/></td>
-                    <td><input  type="checkbox"/></td>
-                    <td><input  type="checkbox"/></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-				</tr>
-				<tr>
-					<td><input  type="checkbox"/></td>
-                    <td>12345678</td>
-					<td>Sabev</td>
-					<td>George</td>
-					<td><input  type="checkbox"/></td>
-					<td><input  type="checkbox"/></td>
-					<td><input  type="checkbox"/></td>
-                    <td><input  type="checkbox"/></td>
-                    <td><input  type="checkbox"/></td>
-                    <td><input  type="checkbox"/></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-				</tr>
-				<tr class="alternate-row">
-					<td><input  type="checkbox"/></td>
-                    <td>12345678</td>
-					<td>Sabev</td>
-					<td>George</td>
-					<td><input  type="checkbox"/></td>
-					<td><input  type="checkbox"/></td>
-					<td><input  type="checkbox"/></td>
-                    <td><input  type="checkbox"/></td>
-                    <td><input  type="checkbox"/></td>
-                    <td><input  type="checkbox"/></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-				</tr>
+			
+			
+			
+				
 				</table>
 				<!--  end product-table................................... --> 
 				</form>
