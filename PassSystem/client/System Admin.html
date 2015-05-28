@@ -361,117 +361,167 @@ $(document).pngFix( );
           <tr valign="top">
             <td>
               <!-- start id-form -->
+
+
               <form action="" id="id-form">
                 <div id="step-holder">
                   <div class="step-no">1</div>
-                  <div class="step-dark-left"><a href="">Add Semester</a></div>
+                  <div class="step-dark-left"><a href="">Add Week</a></div>
                   <div class="step-dark-round">&nbsp;</div>	
                   </div>
-                <label style="color:black">Semester Name:</label>
+                <label style="color:black">Week ID:</label>
                 <input type="text" /><br/><br/>
-                <label style="color:black"> Campus:</label>
-                <select>
-                  <option>Townsville</option>
-                  <option>Cairns</option>
-                  </select><br/><br/>
+                <label style="color:black"> Week Name:</label>
+                <input type="text" /><br/><br/>
+               
                 
                 <div id="step-holder">
                   <div class="step-no">2</div>
-                  <div class="step-dark-left"><a href="">Add Subject</a></div>
+                  <div class="step-dark-left"><a href="">Sessions</a></div>
                   <div class="step-dark-round">&nbsp;</div>
                   </div>
-                <label style="color:black">Subject ID:</label>
-                <input type="text" /><br/><br/>
-                <label style="color:black">Subject Code:</label>
-                <input type="text" /><br/><br/>
-                <label style="color:black">Subject Name:</label>
-                <input type="text" /><br/><br/>
+                <label style="color:black">No of Sessions:</label>
+                <select onchange="showForm(value)" >
+                	<option value="1">1</option>
+                	<option value="2">2</option>
+                	<option value="3">3</option>
+                	<option value="4">4</option>
+                	<option value="5">5</option>
+                </select><br/><br/>
+                <label style="color:black">for Subject:</label>
+                <select>
+                <option>CP2010</option>
+                <option>CP2010</option>
+                <option>CP2010</option>
+                <option>CP2010</option>
+                </select><br/><br/>
+                
                 
                 <div id="step-holder">
                   <div class="step-no">3</div>
-                  <div class="step-dark-left">Add Weeks</div>
+                  <div class="step-dark-left">Session Details</div>
                   <div class="step-dark-round">&nbsp;</div>
                   </div>
-                <label style="color:black">Number of Weeks:</label>
-                <input type=range min=13 max=16  value="13" id=fader step=1 oninput="outputUpdate(value)"/>
-                <output for=fader id=weeks>13</output>
-                <script>
-		function outputUpdate(week) {
-		document.querySelector('#weeks').value = week;
-		}
-		</script> 
-                <br/><br/>
-                
-                <div id="step-holder">
-                  <div class="step-no">4</div>
-                  <div class="step-dark-left">Add Sessions</div>
-                  <div class="step-dark-round">&nbsp;</div>
-                  <div class="clear"></div>
-                  </div>
-                  <label <label style="color:black">Number of Sessions:</label>
-                  <select onchange="showForm(value)" >
-                  <option value="1" >1</option>
-                  <option value="2" >2</option>
-                  <option value="3" >3</option>
-                  <option value="4" >4</option>
-                  <option value="5" >5</option>
-                  <option value="6" >6</option>
-                  <option value="7" >7</option>
-                  <option value="8" >8</option>
-                  <option value="9" >9</option>
-                  <option value="10">10</option>
-                  </select><br/><br/>
+                  	<label id="l1" style="color:black">Campus:</label>
+                  	<select id="s1">
+                  		<option value="Townsville" id="o1">Townsville</option>
+                  		<option value="Cairns" id="o2">Cairns</option>
+                  	</select>
+                  	<label id="l2" style="color:black">Building:</label>
+                  	<input id="i2" type="text" name="username"/>
+                  	<label id="l3" style="color:black">Room:</label>
+                  	<input id="i3" type="text" name="username"/>
+                  	<label id="l4" style="color:black">PASS Leader:</label>
+                  	<select id="s2">
+                  		<option value="Stuart" id="o1">Stuart</option>
+                  		<option value="Ben" id="o2">Ben</option>
+                  	</select>
+                  	<br id="table-br"></br>
+                  
+
                   <script>
                   function showForm(num){
-					  if (f == null){
-					  var f = document.createElement("form");
+					 var form = document.getElementById("id-form");
+					while(document.getElementById('l1') != null){
+					 	var l1 = document.getElementById('l1');
+					 	var s1 = document.getElementById('s1')
+					 	var l2 = document.getElementById('l2');
+					 	var i2 = document.getElementById('i2');
+					 	var l3 = document.getElementById('l3');
+					 	var i3 = document.getElementById('i3');
+					 	var l4 = document.getElementById('l4');
+					 	var s2 = document.getElementById('s2');
+					 	
+
+					 //form.parentNode.removeChild(form);
+					 	l1.parentNode.removeChild(l1);
+					 	s1.parentNode.removeChild(s1);
+					 	l2.parentNode.removeChild(l2);
+					 	i2.parentNode.removeChild(i2);
+					 	l3.parentNode.removeChild(l3);
+					 	i3.parentNode.removeChild(i3);
+					 	l4.parentNode.removeChild(l4);
+					 	s2.parentNode.removeChild(s2);
+					 	
+					}
+
+					 // var newform = document.createElement("form");
+					 // newform.setAttribute('id',"form");
 					  
-					 while (num != 0){
-						 var l1 = document.createElement("label"); //input element, text
-							l1.appendChild(document.createTextNode("Subject ID:"));
-						 var i1 = document.createElement("input"); //input element, text
-							i1.setAttribute('type',"text");
-							i1.setAttribute('name',"username");
+					 for (i = 0; i < num; i++){
+						 var l1 = document.createElement("label");
+						 		l1.setAttribute('id',"l1")
+						 		l1.setAttribute('style', "color:black") //input element, text
+							l1.appendChild(document.createTextNode("Campus:"));
+						 var s1 = document.createElement("select"); 
+						 		s1.setAttribute('id',"s1")//input element, text
+						 var o1 = document.createElement("option")
+						 		o1.text = "Townsville"
+						 		o1.value = "Townsville"
+						 var o2 = document.createElement("option")
+						 		o2.text = "Cairns"
+						 		o2.value = "Cairns"
+						 s1.appendChild(o1);
+						 s1.appendChild(o2);
 						var br = document.createElement("br");
 							
-						var l2 = document.createElement("label"); //input element, text
-							l2.appendChild(document.createTextNode("Staff ID:"));
-						 var i2 = document.createElement("input"); //input element, text
+							
+
+						var l2 = document.createElement("label");
+							l2.setAttribute('id',"l2")
+							l2.setAttribute('style', "color:black") //input element, text
+							l2.appendChild(document.createTextNode("Building:"));
+						 var i2 = document.createElement("input");
+						 	i2.setAttribute('id',"i2")//select element, text
 							i2.setAttribute('type',"text");
 							i2.setAttribute('name',"username");
-							br;
 							
-						var l3 = document.createElement("label"); //input element, text
-							l3.appendChild(document.createTextNode("Session Name:"));
-						 var i3 = document.createElement("input"); //input element, text
+							
+						var l3 = document.createElement("label"); 
+							l3.setAttribute('id',"l3")//input element, text
+							l3.setAttribute('style', "color:black")
+							l3.appendChild(document.createTextNode("Room:"));
+						 var i3 = document.createElement("input"); 
+						 	i3.setAttribute('id',"i3")//input element, text
 							i3.setAttribute('type',"text");
 							i3.setAttribute('name',"username");
-							br;
 							
-						var l4 = document.createElement("label"); //input element, text
-							l4.appendChild(document.createTextNode("Session Date"));
-						 var i4 = document.createElement("input"); //input element, text
-							i4.setAttribute('type',"text");
-							i4.setAttribute('name',"username");
-							br;
 							
-							f.appendChild(l1);
-							f.appendChild(i1);
-							f.appendChild(br);
-							f.appendChild(l2);
-							f.appendChild(i2);
-							f.appendChild(br);
-							f.appendChild(l3);
-							f.appendChild(i3);
-							f.appendChild(br);
-							f.appendChild(l4);
-							f.appendChild(i4);
-							f.appendChild(br);
+						var l4 = document.createElement("label"); 
+							l4.setAttribute('id',"l4")//input element, text
+							l4.setAttribute('style', "color:black")
+							l4.appendChild(document.createTextNode("PASS Leader:"));
+						var s2 = document.createElement("select");
+							s2.setAttribute('id',"s2")
+						 var o1 = document.createElement("option")
+						 		o1.text = "Stuart"
+						 		o1.value = "Stuart"
+						 var o2 = document.createElement("option")
+						 		o2.text = "Ben"
+						 		o2.value = "Ben"
+						 s2.appendChild(o1);
+						 s2.appendChild(o2);
 							
-							--num;
+							
+							form.appendChild(l1);
+							form.appendChild(s1);
+							form.appendChild(br);
+							form.appendChild(l2);
+							form.appendChild(i2);
+							form.appendChild(br);
+							form.appendChild(l3);
+							form.appendChild(i3);
+							form.appendChild(br);
+							form.appendChild(l4);
+							form.appendChild(s2);
+							if (i != num ){
+								form.appendChild(br);
+							}
+							
 						}
-						document.getElementsByTagName('form')[0].appendChild(f);
-					  }
+						
+						//document.getElementsByTagName('form')[0].appendChild(newform);
+					  
 						
                   }
 				  
