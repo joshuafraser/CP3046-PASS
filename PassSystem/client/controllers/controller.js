@@ -12,7 +12,43 @@ angular.module('myApp',
 
  	$scope.monkeyfarm= true;
 
+
  	//////////Student\\\\\\\\\\
+  
+      
+
+  $scope.submit = function() {
+
+
+    //$scope.username1 = Student.find();
+    $scope.password1 = this.password;
+    
+    $scope.username1 = "Hasn't been changed";
+    var x;
+    var count = 0;
+    // for (x in $scope.allStudents){
+    //    count ++;
+    //    $scope.username1 = count; 
+    // }
+
+    for (i=0;i<$scope.allStudents.length;i++){
+      //count++;
+      if (this.username == $scope.allStudents[i]["firstName"] 
+        && this.password == $scope.allStudents[i]["lastName"]){
+        $scope.username1 = "It Worked";
+      }
+      
+
+    }
+    //$scope.username1 = $scope.allStudents;
+    
+
+    $scope.username = '';
+    $scope.password = '';
+
+
+    
+  }
 
  	Student.find().$promise.then(function(results){
  		$scope.allStudents = results;
