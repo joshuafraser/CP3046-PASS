@@ -10,19 +10,26 @@ angular.module('myApp',
  	$scope.allWeeks = [];
  	$scope.allUsers = [];
 
- 	$scope.monkeyfarm= true;
+ 	
 
 
- 	//////////Student\\\\\\\\\\
-  
+
+
+ 	
+  //make 
+  $scope.makeSelectVisible = function(){
+      if ($scope.subjectSelect != null){
+        document.getElementById("weekSelectID").style.visibility = "visible";
+      } else {
+        document.getElementById("weekSelectID").style.visibility = "hidden";
+      }   
+  }
       
 
   $scope.submit = function() {
 
-
     //$scope.username1 = Student.find();
-    $scope.password1 = this.password;
-    
+    $scope.password1 = this.password;   
     $scope.username1 = "Hasn't been changed";
     var x;
     var count = 0;
@@ -37,18 +44,16 @@ angular.module('myApp',
         && this.password == $scope.allStudents[i]["lastName"]){
         $scope.username1 = "It Worked";
       }
-      
-
     }
-    //$scope.username1 = $scope.allStudents;
-    
-
+    //$scope.username1 = $scope.allStudents;   
     $scope.username = '';
-    $scope.password = '';
-
-
-    
+    $scope.password = '';  
   }
+
+
+
+
+  //////////Student\\\\\\\\\\
 
  	Student.find().$promise.then(function(results){
  		$scope.allStudents = results;
@@ -60,6 +65,13 @@ angular.module('myApp',
             	$scope.spot = "";
         });
 	}
+
+    $scope.getStudentById = function (itemid){
+      //console.log(itemid);
+      Student.findById({id: itemid});
+      getStudents();
+    }
+
   	$scope.deleteStudent = function (itemid){
   		//console.log(itemid);
   		Student.deleteById({id: itemid});

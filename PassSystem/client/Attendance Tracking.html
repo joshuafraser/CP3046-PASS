@@ -372,36 +372,27 @@ $(document).pngFix( );
 
 				
 
-                <select id="mySelect" ng-model="selection" ng-options="subject.code for subject in allSubjects track by subject.code">
+                <select id="subjectSelectID" ng-model="subjectSelect" ng-options="subject.code for subject in allSubjects track by subject.code"  ng-change="makeSelectVisible()">
                 	<option value="">-- choose subject --</option>
                 </select>
 
-				<tt>selection={{selection}}</tt>
+				<!-- <tt>subject={{subjectSelect.code}}</tt> -->
 
-				<select id="mySelect1" ng-model="monkey" ng-options="passSession.week.weekId for passSession in allPassSessions track by passSession.subject">
-                	<option value="">-- choose Pass Session --</option>
+				<select id="weekSelectID" ng-model="weekSelect" ng-options="passSession.week.weekId for passSession in allPassSessions track by passSession.subject">
+                	<option value="">-- choose week --</option>
                 </select>
 
-                <tt>selection={{monkey}}</tt>
+                <!-- <tt>week={{weekSelect}}</tt> -->
                
 <!-- passSession.subject == {{selection.code}} -->
 
 
-                    <script>
+            <script>
+			 document.getElementById("weekSelectID").style.visibility = "hidden";
+                    
+			
 
-                    function checkSubject(passSubject){
-
-                    	alert(passSubject);
-                    	return true;
-                    }
-				// document.getElementById("mySelect1").style.visibility = "hidden";
-				// 	function something(){
-				// 		var x = document.getElementById("mySelect").value;
-				// 		document.getElementById("mySelect1").style.visibility = "visible";
-						
-				// 	}
-
-				</script>    
+			</script>    
 
              
 
@@ -437,10 +428,10 @@ $(document).pngFix( );
                     <th width="156" class="table-header-repeat line-left"><a href="">Total Attendance</a></th>
                     <th width="156" class="table-header-repeat line-left"><a href="">Final Grade</a></th>
 				</tr>
-				<tr ng-repeat="n in monkey.attendance">
+				<tr ng-repeat="n in weekSelect.attendance">
 					<td><input  type="checkbox"/></td>
                     <td>{{n.studentId}}</td>
-					<td ng-options="">{{}}</td>
+					<td ng-repeat="m in allStudents" ng-init="n.studentId = m.studentId">{{m.firstName}}</td>
 					<td>{{}}</td>
 					<td><input  type="checkbox"/></td>
 					<td><input  type="checkbox"/></td>
