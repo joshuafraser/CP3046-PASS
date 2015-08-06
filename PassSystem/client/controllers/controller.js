@@ -1,12 +1,12 @@
 angular.module('myApp',
-  ['lbServices']).controller('Controller', ['$scope', 'Student', 'Staff', 'Subject', 'Campus', 'Location', 'PassSession', 'Week', 'User', 
-  function($scope, Student, Staff, Subject, Campus, Locations, PassSession, Week, User) {
+  ['lbServices']).controller('Controller', ['$scope', 'Student', 'Staff', 'Subject', 'Campus', 'Location', 'Attendences', 'Week', 'User', 
+  function($scope, Student, Staff, Subject, Campus, Locations, Attendences, Week, User) {
  	$scope.allStudents = [];
  	$scope.allSubjects = [];
  	$scope.allStaff = [];
  	$scope.allCampus = [];
  	$scope.allLocations = [];
- 	$scope.allPassSessions = [];
+ 	$scope.allAttendences = [];
  	$scope.allWeeks = [];
  	$scope.allUsers = [];
 
@@ -243,39 +243,39 @@ angular.module('myApp',
   	} 
 
 
- 	//////////PassSessions\\\\\\\\\\
+ 	//////////Attendences\\\\\\\\\\
 
- 	PassSession.find().$promise.then(function(results){
- 		$scope.allPassSessions = results;
+ 	Attendences.find().$promise.then(function(results){
+ 		$scope.allAttedences = results;
  		});
-	function getPassSessions() {
-    	PassSession.find(
+	function getAttendences() {
+    	Attendences.find(
        		function (result) {
-            	$scope.allPassSessions = result;
-            	$scope.passSession = "";
+            	$scope.allAttedences = result;
+            	$scope.attendences = "";
         });
 	}
-  	$scope.deletePassSession = function (itemid){
+  	$scope.deleteAttendences = function (itemid){
   		//console.log(itemid);
-  		PassSession.deleteById({id: itemid});
-  		getPassSessions();
+  		Attendences.deleteById({id: itemid});
+  		getAttendences();
   	}
-  	$scope.addPassSession = function (){
+  	$scope.addAttendences = function (){
   		//console.log($scope.spot);
-  		PassSession.create($scope.passSession);
-        getPassSessions();   
+  		Attendences.create($scope.Attendences);
+        getAttendences();   
   	}
-  	$scope.editPassSession = function(itemid){
+  	$scope.editAttendences = function(itemid){
   		//console.log(itemid);
-  		$scope.passSession = PassSession.findById({id: itemid});
+  		$scope.attendences = Attendences.findById({id: itemid});
   	}
-  	$scope.updatePassSession = function(){
+  	$scope.updateAttendences = function(){
   		//console.log($scope.spot.studentId);
-  		PassSession.upsert($scope.passSession);
-  		getPassSessions();
+  		Attendences.upsert($scope.attendences);
+  		getAttendences();
   	}
-  	$scope.deselectPassSessions = function(){
-  		$scope.passSession = "";
+  	$scope.deselectAttendences = function(){
+  		$scope.attendences = "";
   	} 
 
 
