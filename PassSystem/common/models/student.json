@@ -23,6 +23,10 @@
     "email": {
       "type": "string",
       "required": true
+    },
+    "courseCode": {
+      "type": "string",
+      "required": false
     }
   },
   "validations": [],

@@ -1,0 +1,27 @@
+{
+  "name": "Attendences",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "student": {
+      "type": "Student",
+      "required": true
+    },
+    "subject": {
+      "type": "Subject",
+      "required": true
+    },
+    "week": {
+      "type": "Week",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
