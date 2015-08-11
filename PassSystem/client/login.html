@@ -46,11 +46,11 @@ $(document).pngFix( );
 	<form ng-submit="submit()">
 		<table border="0" cellpadding="0" cellspacing="0" >
 		<tr>
-			<th>Username {{username1}}</th>
+			<th>Username</th>
 			<td><input type="text" ng-model="username" value="username"  class="login-inp" /></td>
 		</tr>
 		<tr>
-			<th>Password {{password1}}</th>
+			<th>Password</th>
 			<td><input type="password" ng-model="password" value="************" class="login-inp" /></td>
 		</tr>
 
@@ -60,9 +60,13 @@ $(document).pngFix( );
 			<th></th>
 			<td valign="top"><input type="checkbox" class="checkbox-size" id="login-check" /><label for="login-check">Remember me</label></td>
 		</tr>
+		<!-- <tr>
+			<th></th>
+			<td><a href="dashboard.html"><input type="submit" id="submit" value="Submit" class="submit-login" /></a></td>
+		</tr> -->
 		<tr>
 			<th></th>
-			<td><input type="submit" id="submit" value="Submit" class="submit-login" /></td>
+			<td><a href="dashboard.html"><input value="Submit" class="submit-login"/></a></td>
 		</tr>
 		</table>
     </form>
