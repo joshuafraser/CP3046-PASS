@@ -1,53 +1,103 @@
 angular.module('myApp',
-  ['lbServices']).controller('Controller', ['$scope', 'Student', 'Staff', 'Subject', 'Campus', 'Location', 'Attendences', 'Week', 'User', 
+  ['lbServices']).controller('Controller', ['$scope', 'Student', 'Staff', 'Subject', 'Campus', 'Location', 'Attendences', 'Week', 'User',
   function($scope, Student, Staff, Subject, Campus, Locations, Attendences, Week, User) {
- 	$scope.allStudents = [];
- 	$scope.allSubjects = [];
- 	$scope.allStaff = [];
- 	$scope.allCampus = [];
- 	$scope.allLocations = [];
- 	$scope.allAttendences = [];
- 	$scope.allWeeks = [];
- 	$scope.allUsers = [];
+    $scope.allStudents = [];
+    $scope.allSubjects = [];
+    $scope.allStaff = [];
+    $scope.allCampus = [];
+    $scope.allLocations = [];
+    $scope.allAttendences = [];
+    $scope.allWeeks = [];
+    $scope.allUsers = [];
 
- 	
+    $scope.attendancesToSubmit = [];
+
+  	$scope.subjectSelect="";
+    $scope.weekSelect="";
+
+    $scope.subjectForMarking=[];
 
 
+    $scope.printItem = function(){
+      console.log($scope.subjectSelect.code + $scope.weekSelect.name);
+    }
+
+    //Used to modify a table for marking attendance.
+    $scope.findSubjectForMarking = function(){
+      //$scope.printItem()
+      if($scope.subjectSelect == ""){
+        //console.log("No subject selected")
+      }else{
+        //console.log("Selected" + $scope.subjectSelect.subjectId);
+
+        //Assign selected subject to new var to use statically
+        $scope.subjectForMarking = $scope.subjectSelect;
+
+        //Create new array to manage the student objects
+        $scope.enrolledStudents = $scope.subjectForMarking.enrolled;
+        //console.log("marking" + $scope.subjectSelect + "For: " + $scope.enrolledStudents);
 
 
- 	
-  //make 
+        //$scope.enrolledStudents.forEach(function (arrayElem){
+        //  console.log(arrayElem.studentId);
+      }
+
+    }
+
+    //Gets the student object from the table and creates an array containing a student, subject and week to be used
+    //when creating an attendance object
+    $scope.addToAttendances = function(student){
+      console.log("selected add to attendances")
+      $scope.newAttendance = [];
+
+      $scope.newAttendance.push(student, $scope.subjectForMarking, $scope.weekSelect)
+
+      $scope.attendancesToSubmit.push($scope.newAttendance)
+      //console.log($scope.attendancesToSubmit)
+      $scope.submitAttendancesToDb($scope.attendancesToSubmit)
+    }
+
+    //Resets the allAttendances list to empty then adds in the array of new attendances to submit.
+    $scope.submitAttendancesToDb = function(listOfAttendances){
+      console.log("Submitting to db")
+      $scope.allAttendences = [];
+      $scope.allAttendences.push(listOfAttendances)
+      $scope.addAttendences()
+    }
+
+
+  //make
   $scope.makeSelectVisible = function(){
       if ($scope.subjectSelect != null){
         document.getElementById("weekSelectID").style.visibility = "visible";
       } else {
         document.getElementById("weekSelectID").style.visibility = "hidden";
-      }   
+      }
   }
-      
+
 
   $scope.submit = function() {
 
     //$scope.username1 = Student.find();
-    $scope.password1 = this.password;   
+    $scope.password1 = this.password;
     $scope.username1 = "Hasn't been changed";
     var x;
     var count = 0;
     // for (x in $scope.allStudents){
     //    count ++;
-    //    $scope.username1 = count; 
+    //    $scope.username1 = count;
     // }
 
     for (i=0;i<$scope.allStudents.length;i++){
       //count++;
-      if (this.username == $scope.allStudents[i]["firstName"] 
+      if (this.username == $scope.allStudents[i]["firstName"]
         && this.password == $scope.allStudents[i]["lastName"]){
         $scope.username1 = "It Worked";
       }
     }
-    //$scope.username1 = $scope.allStudents;   
+    //$scope.username1 = $scope.allStudents;
     $scope.username = '';
-    $scope.password = '';  
+    $scope.password = '';
   }
 
 
@@ -56,9 +106,11 @@ angular.module('myApp',
   //////////Student\\\\\\\\\\
 
  	Student.find().$promise.then(function(results){
+    console.log("Called Students.find")
  		$scope.allStudents = results;
  		});
 	function getStudents() {
+    console.log("Called getStudents")
     	Student.find(
        		function (result) {
             	$scope.allStudents = result;
@@ -68,8 +120,9 @@ angular.module('myApp',
 
     $scope.getStudentById = function (itemid){
       //console.log(itemid);
-      Student.findById({id: itemid});
-      getStudents();
+      return Student.findById({id: itemid});
+      //getStudents();
+    //
     }
 
   	$scope.deleteStudent = function (itemid){
@@ -78,9 +131,9 @@ angular.module('myApp',
   		getStudents();
   	}
   	$scope.addStudent = function (){
-  		//console.log($scope.spot);
+  		console.log("Called" + $scope.spot);
   		Student.create($scope.spot);
-        getStudents();   
+        getStudents();
   	}
   	$scope.editStudent = function(itemid){
   		//console.log(itemid);
@@ -93,7 +146,7 @@ angular.module('myApp',
   	}
   	$scope.deselectStudent = function(){
   		$scope.spot = "";
-  	}  
+  	}
 
 
   	//////////Subject\\\\\\\\\\
@@ -108,6 +161,7 @@ angular.module('myApp',
             	$scope.subject = "";
         });
 	}
+
   	$scope.deleteSubject = function (itemid){
   		//console.log(itemid);
   		Subject.deleteById({id: itemid});
@@ -116,7 +170,7 @@ angular.module('myApp',
   	$scope.addSubject = function (){
   		//console.log($scope.spot);
   		Subject.create($scope.subject);
-        getSubjects();   
+        getSubjects();
   	}
   	$scope.editSubject = function(itemid){
   		//console.log(itemid);
@@ -129,7 +183,7 @@ angular.module('myApp',
   	}
   	$scope.deselectSubject = function(){
   		$scope.subject = "";
-  	}  
+  	}
 
 
 
@@ -153,7 +207,7 @@ angular.module('myApp',
   	$scope.addStaff = function (){
   		//console.log($scope.spot);
   		Staff.create($scope.staff);
-        getStaff();   
+        getStaff();
   	}
   	$scope.editStaff = function(itemid){
   		//console.log(itemid);
@@ -166,7 +220,7 @@ angular.module('myApp',
   	}
   	$scope.deselectStaff = function(){
   		$scope.staff = "";
-  	}  
+  	}
 
 
 
@@ -190,7 +244,7 @@ angular.module('myApp',
   	$scope.addCampus = function (){
   		//console.log($scope.spot);
   		Campus.create($scope.campus);
-        getCampus();   
+        getCampus();
   	}
   	$scope.editCampus = function(itemid){
   		//console.log(itemid);
@@ -203,7 +257,7 @@ angular.module('myApp',
   	}
   	$scope.deselectCampus = function(){
   		$scope.campus = "";
-  	}  
+  	}
 
 
 
@@ -227,7 +281,7 @@ angular.module('myApp',
   	$scope.addLocations = function (){
   		//console.log($scope.spot);
   		Locations.create($scope.locations);
-        getLocations();   
+        getLocations();
   	}
   	$scope.editLocations = function(itemid){
   		//console.log(itemid);
@@ -240,18 +294,18 @@ angular.module('myApp',
   	}
   	$scope.deselectLocations = function(){
   		$scope.locations = "";
-  	} 
+  	}
 
 
  	//////////Attendences\\\\\\\\\\
 
  	Attendences.find().$promise.then(function(results){
- 		$scope.allAttedences = results;
+ 		$scope.allAttendences = results;
  		});
 	function getAttendences() {
     	Attendences.find(
        		function (result) {
-            	$scope.allAttedences = result;
+            	$scope.allAttendences = result;
             	$scope.attendences = "";
         });
 	}
@@ -261,9 +315,10 @@ angular.module('myApp',
   		getAttendences();
   	}
   	$scope.addAttendences = function (){
-  		//console.log($scope.spot);
+
+  		console.log("Called addAttendances" + $scope.allAttendences);
   		Attendences.create($scope.Attendences);
-        getAttendences();   
+        getAttendences();
   	}
   	$scope.editAttendences = function(itemid){
   		//console.log(itemid);
@@ -276,7 +331,7 @@ angular.module('myApp',
   	}
   	$scope.deselectAttendences = function(){
   		$scope.attendences = "";
-  	} 
+  	}
 
 
  	//////////Weeks\\\\\\\\\\
@@ -299,7 +354,7 @@ angular.module('myApp',
   	$scope.addWeek = function (){
   		//console.log($scope.spot);
   		Week.create($scope.week);
-        getWeeks();   
+        getWeeks();
   	}
   	$scope.editWeek = function(itemid){
   		//console.log(itemid);
@@ -312,7 +367,7 @@ angular.module('myApp',
   	}
   	$scope.deselectWeek = function(){
   		$scope.week = "";
-  	} 
+  	}
 
 
 	//////////Users\\\\\\\\\\
@@ -335,7 +390,7 @@ angular.module('myApp',
  //  	$scope.addUser = function (){
  //  		//console.log($scope.spot);
  //  		User.create($scope.spot);
- //        getUsers();   
+ //        getUsers();
  //  	}
  //  	$scope.editUser = function(itemid){
  //  		//console.log(itemid);
@@ -348,6 +403,6 @@ angular.module('myApp',
  //  	}
  //  	$scope.deselectUser = function(){
  //  		$scope.spot = "";
- //  	} 
+ //  	}
 
 }]);
