@@ -15,6 +15,7 @@ angular.module('myApp',
   	$scope.subjectSelect="";
     $scope.weekSelect="";
 
+
     $scope.subjectForMarking=[];
 
 
@@ -44,25 +45,35 @@ angular.module('myApp',
 
     }
 
-    //Gets the student object from the table and creates an array containing a student, subject and week to be used
+    //Gets the student object from the table and creates an array containing a studentId, subjectId and weekId to be used
     //when creating an attendance object
     $scope.addToAttendances = function(student){
       console.log("selected add to attendances")
       $scope.newAttendance = [];
 
-      $scope.newAttendance.push(student, $scope.subjectForMarking, $scope.weekSelect)
+      $scope.newAttendance.push(student.studentId,$scope.subjectForMarking.subjectId,$scope.weekSelect.weekId)
+
+      //console.log($scope.newAttendance )
 
       $scope.attendancesToSubmit.push($scope.newAttendance)
       //console.log($scope.attendancesToSubmit)
-      $scope.submitAttendancesToDb($scope.attendancesToSubmit)
-    }
 
-    //Resets the allAttendances list to empty then adds in the array of new attendances to submit.
-    $scope.submitAttendancesToDb = function(listOfAttendances){
+    }
+    //Handles the binding of the vars to the Attendance object for adding to db
+    $scope.submitAttendancesToDb = function(){
       console.log("Submitting to db")
-      $scope.allAttendences = [];
-      $scope.allAttendences.push(listOfAttendances)
-      $scope.addAttendences()
+
+      //Pulling vars from arrays to bind to Attendence object
+      angular.forEach($scope.attendancesToSubmit, function(arrayElem){
+        console.log("Array contains:")
+        console.log(arrayElem[0]) //stuId
+        console.log(arrayElem[1]) //subId
+        console.log(arrayElem[2]) //weekId
+
+        //persist Attendance object to db, <--DOESNT bind vars, fails on undefined student
+        //Attendences.create(Attendences.student.arrayElem[0], Attendences.subject.arrayElem[1], Attendences.week.arrayElem[2])
+      });
+
     }
 
 
@@ -315,11 +326,11 @@ angular.module('myApp',
   		getAttendences();
   	}
   	$scope.addAttendences = function (){
-
-  		console.log("Called addAttendances" + $scope.allAttendences);
+    console.log("Called add")
   		Attendences.create($scope.Attendences);
         getAttendences();
   	}
+
   	$scope.editAttendences = function(itemid){
   		//console.log(itemid);
   		$scope.attendences = Attendences.findById({id: itemid});
@@ -372,37 +383,37 @@ angular.module('myApp',
 
 	//////////Users\\\\\\\\\\
 
- // 	User.find().$promise.then(function(results){
- // 		$scope.allUsers = results;
- // 		});
-	// function getUsers() {
- //    	User.find(
- //       		function (result) {
- //            	$scope.allUsers = result;
- //            	$scope.spot = "";
- //        });
-	// }
- //  	$scope.deleteUser = function (itemid){
- //  		//console.log(itemid);
- //  		User.deleteById({id: itemid});
- //  		geUsers();
- //  	}
- //  	$scope.addUser = function (){
- //  		//console.log($scope.spot);
- //  		User.create($scope.spot);
- //        getUsers();
- //  	}
- //  	$scope.editUser = function(itemid){
- //  		//console.log(itemid);
- //  		$scope.spot = User.findById({id: itemid});
- //  	}
- //  	$scope.updateUser = function(){
- //  		//console.log($scope.spot.studentId);
- //  		User.upsert($scope.spot);
- //  		getUsers();
- //  	}
- //  	$scope.deselectUser = function(){
- //  		$scope.spot = "";
- //  	}
+  	User.find().$promise.then(function(results){
+  		$scope.allUsers = results;
+  		});
+	 function getUsers() {
+     	User.find(
+        		function (result) {
+             	$scope.allUsers = result;
+             	$scope.spot = "";
+         });
+	 }
+   	$scope.deleteUser = function (itemid){
+   		//console.log(itemid);
+   		User.deleteById({id: itemid});
+   		geUsers();
+   	}
+   	$scope.addUser = function (){
+   		//console.log($scope.spot);
+   		User.create($scope.spot);
+         getUsers();
+   	}
+   	$scope.editUser = function(itemid){
+   		//console.log(itemid);
+   		$scope.spot = User.findById({id: itemid});
+   	}
+   	$scope.updateUser = function(){
+   		//console.log($scope.spot.studentId);
+   		User.upsert($scope.spot);
+   		getUsers();
+   	}
+   	$scope.deselectUser = function(){
+   		$scope.spot = "";
+   	}
 
 }]);

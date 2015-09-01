@@ -209,7 +209,7 @@
       </tbody>
     </table>
 	<h2>List of all Attendances</h2>
-        <table>
+      <table>
           <thead>
             <tr>
               <th>Subject Code</th>
@@ -218,12 +218,16 @@
             </tr>
           </thead>
           <tbody>
+          <tr>
+            <td><input ng-model="Attendences.student.studentId"></input></td>
+            <td><input ng-model="Attendences.subject.subjectId"></input></td>
+            <td><input ng-model="Attendences.week.weekId"></input></td>
+            <td><button ng-click="addAttendences()">Add Atts</button></td>
 
           <tr ng-repeat="attendance in allAttendences">
             <td>{{attendance.subject.code}}</td>
             <td>{{attendance.student.studentId}}</td>
 			      <td>{{attendance.week.weekId}}</td>
-
         </tr>
       </tbody>
     </table>
